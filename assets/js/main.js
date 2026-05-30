@@ -21,6 +21,7 @@ const deck = new Reveal({
   plugins: [RevealZoom, RevealNotes]
 });
 
+window.deck = deck; // expuesto para depuración/automatización
 deck.initialize().then(() => {
   buildCycles();
   // Render del estado inicial
@@ -101,7 +102,8 @@ function animateCounters(slide) {
 /* =========================================================
    4. Gráficas Chart.js
    ========================================================= */
-const NAVY = '#0a2240', SKY = '#2f80c8', GOLD = '#e8a33d', TEAL = '#2bb6a8';
+const INDIGO = '#4361ee', CYAN = '#4cc9f0', PINK = '#f72585',
+      VIOLET = '#7209b7', GREEN = '#06d6a0', AMBER = '#ff9e00';
 const charts = {};
 
 function baseOpts(extra = {}) {
@@ -110,7 +112,7 @@ function baseOpts(extra = {}) {
     maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
-      tooltip: { backgroundColor: NAVY }
+      tooltip: { backgroundColor: '#16182b' }
     },
     animation: { duration: 1200, easing: 'easeOutQuart' }
   }, extra);
@@ -127,9 +129,9 @@ function drawCharts(slide) {
         labels: ['2018', '2020', '2022', '2024', '2026', '2028*'],
         datasets: [{
           data: [33, 64, 97, 149, 221, 330],
-          borderColor: SKY, backgroundColor: 'rgba(47,128,200,.15)',
+          borderColor: INDIGO, backgroundColor: 'rgba(67,97,238,.14)',
           fill: true, tension: .35, borderWidth: 3,
-          pointBackgroundColor: GOLD, pointRadius: 5
+          pointBackgroundColor: PINK, pointRadius: 5
         }]
       },
       options: baseOpts({
@@ -149,8 +151,8 @@ function drawCharts(slide) {
         labels: ['Datos', 'IA / ML', 'Actuaría', 'BI / Analítica', 'Riesgo'],
         datasets: [{
           data: [100, 92, 74, 81, 69],
-          backgroundColor: [SKY, TEAL, GOLD, NAVY, '#1c5390'],
-          borderRadius: 8, barThickness: 38
+          backgroundColor: [INDIGO, CYAN, AMBER, VIOLET, PINK],
+          borderRadius: 10, barThickness: 38
         }]
       },
       options: baseOpts({
